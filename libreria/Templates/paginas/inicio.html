@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block titulo %} Inicio {% endblock %}
+    
+{% block Contenido %} 
+<div class="row justify-content-center align-items-center g-2">
+  <div class="col-12">
+    <div class="p-5 mb-4 bg-light rounded-3">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Beienvenido a su Biblioteca</h1>
+        <p class="col-md-8 fs-4">Empezar a Administrar Biblioteca</Em></p>
+        <br>
+        <a name="" id="" class="btn btn-primary" href="{% url 'libros' %}" role="button">Ver Lista de libros</a>
+        
+        <a name="" id="" class="btn btn-primary" href="{% url 'crear' %}" role="button">Agregar nuevo libro</a>
+      </div>
+
+      {% csrf_token %}
+      {% for campo in  formulario %}
+      <div class="mb-3">
+        <label for="" class="form-label">{{ campo.label }}</label>
+        <input 
+        type="{{ campo.field.widget.input_type }}"
+        class="form-control" name="{{ campo.name }}" 
+        id="" 
+        aria-describedby="helpId" 
+        placeholder="{{ campo.label}}"
+        value="{{ campo.value | default:'' }}"
+        />
+        
+      </div>
+      <div class="col-12 help-text">{{ campo.errors }}</div>
+      {% endfor%}
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
